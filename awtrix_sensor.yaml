@@ -27,7 +27,14 @@ blueprint:
           selector:
             entity:
               domain: sensor
-
+              
+        optional_condition:
+          name: "Zusätzliche Bedingung (Optional)"
+          description: "Leer lassen, wenn keine Bedingung gewünscht ist."
+          default: []
+          selector:
+            condition: {}
+            
     geraet:
       name: AWTRIX-Panel
       icon: mdi:led-strip-variant
@@ -456,7 +463,8 @@ conditions:
       - condition: state
         entity_id: !input sensor_entity
         state: ["unknown", "unavailable", "none"]
-
+  - !input optional_condition
+  
 actions:
   - action: mqtt.publish
     data:
