@@ -463,7 +463,7 @@ conditions:
       - condition: state
         entity_id: !input sensor_entity
         state: ["unknown", "unavailable", "none"]
-  - !input optional_condition
+  - condition: !input optional_condition
   
 actions:
   - action: mqtt.publish
